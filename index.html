@@ -189,14 +189,14 @@ Department of Statistics, University of South Carolina</div></h4>
 
 <div id="TOC">
 <ul>
-<li><a href="#i.analysis-goal">I.Analysis Goal</a></li>
-<li><a href="#ii.analysis-outline">II.Analysis Outline</a><ul>
-<li><a href="#the-disease-model-logistic-regession">1.The Disease Model( Logistic Regession )</a></li>
-<li><a href="#the-expenditure-model-two-part-model">2.The Expenditure Model( Two-Part Model )</a></li>
-<li><a href="#final-estimation">3.Final Estimation</a></li>
+<li><a href="#i.-analysis-goal">I. Analysis Goal</a></li>
+<li><a href="#ii.-analysis-outline">II. Analysis Outline</a><ul>
+<li><a href="#part-i-the-disease-model-logistic-regression">Part I: The Disease Model( Logistic Regression )</a></li>
+<li><a href="#part-ii-the-expenditure-model-two-part-model">Part II: The Expenditure Model( Two-Part Model )</a></li>
+<li><a href="#part-iii-final-estimation">Part III: Final Estimation</a></li>
 </ul></li>
-<li><a href="#iii.data-analysis">III.Data Analysis</a><ul>
-<li><a href="#part-i-diesase-model">Part I: Diesase Model</a><ul>
+<li><a href="#iii.-data-analysis">III. Data Analysis</a><ul>
+<li><a href="#part-i-disease-model">Part I: Disease Model</a><ul>
 <li><a href="#logistic-regression"><em>1.Logistic Regression</em></a></li>
 </ul></li>
 <li><a href="#part-ii-the-expenditure-model">Part II: The Expenditure Model</a><ul>
@@ -204,7 +204,7 @@ Department of Statistics, University of South Carolina</div></h4>
 <li><a href="#logistic-regression-1"><em>2.Logistic Regression</em></a></li>
 <li><a href="#conbine-two-part-expenditure-models"><em>3.Conbine Two-part expenditure models</em></a></li>
 </ul></li>
-<li><a href="#part-iii-final-estimation">Part III: Final Estimation</a><ul>
+<li><a href="#part-iii-final-estimation-1">Part III: Final Estimation</a><ul>
 <li><a href="#combind-the-disease-model-and-the-expenditure-model"><em>1.Combind the Disease Model and the Expenditure Model</em></a></li>
 </ul></li>
 </ul></li>
@@ -212,8 +212,8 @@ Department of Statistics, University of South Carolina</div></h4>
 </div>
 
 
-<div id="i.analysis-goal" class="section level1">
-<h1>I.Analysis Goal</h1>
+<div id="i.-analysis-goal" class="section level1">
+<h1>I. Analysis Goal</h1>
 <p>The analysis goal in this project is to estimate the smoking-attributable costs of treating major smoking-caused diseases. The fundamental idea in this project can be explained by the following formula,</p>
 <span class="math display">\[\begin{align}
 Smoking\  Attributable\  Expenditure = Total\ Medical\  Expenditure &amp;\times Smoking-attributable\ Risk \times MSCD\\
@@ -222,16 +222,16 @@ Smoking\  Attributable\  Expenditure = Total\ Medical\  Expenditure &amp;\times 
 <p>To achieve the ultimate goal, estimating the smoking attributable expenditure, the two relationships are analyzed in this project. Firstly, the project evaluates the relationship between having MSCD and smoking behavior. Secondly, investigate the connection between smoking caused disease (MSCD) and their medical cost. In the first section of the analysis, the study target is to estimate the smoking attributable risk of having MSCD, which leads to model the probability of having MSCD given smoking or non-smoking behavior. Therefore, in the project, the logistic model called the disease model is implemented.</p>
 <p>In the second section, the MSCD cases and their medical expenditures need to be investigated. In other word, estimate how much medical expenditures that is contributed by MSCD. Hence, the expenditure model is built for solve this question. In this particular analysis, a two-part model will be employed. In the first part of the expenditure model, it estimates probability of occurring any medical. In this case, logistic regression is implemented to model the probability given smoking-related disease and non-disease status. In the second part, the target is to estimate the size of medical expenditure given there already is a positive medical expenditure. Accordingly, the linear regression is used. The following is the analysis outline that the project will be structured.</p>
 </div>
-<div id="ii.analysis-outline" class="section level1">
-<h1>II.Analysis Outline</h1>
-<div id="the-disease-model-logistic-regession" class="section level3">
-<h3>1.The Disease Model( Logistic Regession )</h3>
+<div id="ii.-analysis-outline" class="section level1">
+<h1>II. Analysis Outline</h1>
+<div id="part-i-the-disease-model-logistic-regression" class="section level3">
+<h3>Part I: The Disease Model( Logistic Regression )</h3>
 <span class="math display">\[\begin{align}P(MSCD | smoke=1,X_i)\, and\, P(MSCD | smoke=0,X_i)\\
 \\
 Smoking\, Attr.\, Risk = \frac{P(MSCD | smoke=1,X_i)-P(MSCD | smoke=0,X_i)}{ P(MSCD | smoke=1,X_i)}\end{align}\]</span>
 </div>
-<div id="the-expenditure-model-two-part-model" class="section level3">
-<h3>2.The Expenditure Model( Two-Part Model )</h3>
+<div id="part-ii-the-expenditure-model-two-part-model" class="section level3">
+<h3>Part II: The Expenditure Model( Two-Part Model )</h3>
 <p><strong>Linear Regression Part:</strong></p>
 <span class="math display">\[\begin{align}
 E(Med.Exp| Exp.&gt;0,MSCD=1,X_i)\\
@@ -245,7 +245,7 @@ P(Exp.&gt;0|MSCD=1,X_i)\\
 P(Exp.&gt;0|MSCD=0,X_i)
 \end{align}\]</span>
 <p><strong>Combination Two Parts:</strong></p>
-<span class="math display">\[\begin{align*} 
+<span class="math display">\[\begin{align} 
 E(Med.Exp | MSCD=1,X_i) &amp;= E(Med.Exp | Exp.&gt;0,MSCD=1,X_i)\times P(Exp.&gt;0 | MSCD=1,X_i)\\
 &amp;+ E(Med.Exp=0 | Exp.=0,MSCD=1,X_i)\times ( 1-P(Exp.&gt;0 | MSCD=1,X_i) )\\
 \\
@@ -254,10 +254,10 @@ E(Med.Exp | MSCD=0,X_i) &amp;= E(Med.Exp| Exp.&gt;0,MSCD=0,X_i)\times P(Exp.&gt;
 \\
 MSCD.AFE &amp;= \frac{E(Med.Exp | MSCD=1)-E(Med.Exp | MSCD=0)}{E(Med.Exp | MSCD=1)}
 
-\end{align*}\]</span>
+\end{align}\]</span>
 </div>
-<div id="final-estimation" class="section level3">
-<h3>3.Final Estimation</h3>
+<div id="part-iii-final-estimation" class="section level3">
+<h3>Part III: Final Estimation</h3>
 <span class="math display">\[\begin{align}SAE &amp;= \sum{MSCD_i} \times Med.\  Exp_i\times Smoking\ Attributable\  Risk_i \times MSCD.AFE\\
 \\
 SAEF_i &amp;= \frac{SAE_i }{\sum{MSCD_i}\times  Med.\  Exp_i}\end{align}\]</span>
@@ -265,26 +265,26 @@ SAEF_i &amp;= \frac{SAE_i }{\sum{MSCD_i}\times  Med.\  Exp_i}\end{align}\]</span
 <br />
 <br />
 <em>Notions:</em></p>
-<p><em>Med.Exp: total medical expenditure</em><br />
-<em>MSCD.AFE: MSCD-attributable fraction in total medical expenditure</em><br />
-<em><span class="math inline">\(i\)</span>: ith cluster</em><br />
-<em><span class="math inline">\(smoke_i\)</span>: smoke=0, i never smokes; smoke=1, i is a former or current smoker</em><br />
-<em><span class="math inline">\(X_i\)</span>: the other featuers for ith cluster </em><br />
-<em>MSCD: smoking caused disease</em><br />
-<em>SAE: smoking-attributable medical expenditure</em><br />
-<em>SAEF: smoking-attributable medical expenditure fractions</em></p>
+<p><em>Med.Exp - total medical expenditure</em><br />
+<em>MSCD.AFE - MSCD-attributable fraction in total medical expenditure</em><br />
+<em><span class="math inline">\(i\)</span> - ith cluster</em><br />
+<em><span class="math inline">\(smoke_i\)</span> - smoke=0, i never smokes; smoke=1 i is a former/current smoker</em><br />
+<em><span class="math inline">\(X_i\)</span> - the other features for ith cluster </em><br />
+<em>MSCD - smoking caused disease</em><br />
+<em>SAE - smoking-attributable medical expenditure</em><br />
+<em>SAEF - smoking-attributable medical expenditure fractions</em></p>
 
 </div>
 </div>
-<div id="iii.data-analysis" class="section level1">
-<h1>III.Data Analysis</h1>
-<div id="part-i-diesase-model" class="section level2">
-<h2>Part I: Diesase Model</h2>
+<div id="iii.-data-analysis" class="section level1">
+<h1>III. Data Analysis</h1>
+<div id="part-i-disease-model" class="section level2">
+<h2>Part I: Disease Model</h2>
 <div id="logistic-regression" class="section level3">
 <h3><em>1.Logistic Regression</em></h3>
-<p>The MSCD logistic regression has variables, such that (1) the binary variable of smoking; (2) key characteristics including age, gender; and (3) additional covariates including poverty status, education years. Moreover, Age is only continious variable in this model. For other variables, such as gender (male=1,female=0), smoke(yes=1,no=0), poverty(yes=1,no=0) are all binary variables. But the education has 4 levels, “20”&quot; stands for less than high school, “21”&quot; is high school, “22”&quot; is 4-years collage, and “23”&quot; means more than 4 years collage.</p>
-<p>The logistics regression is meant to model the relationship between the smoking behavior and risk of getting MSCD disease. in the end of this part, the smoking attributable risk will be estimate in different age groups by gender. Based on the attributable risks, for both female and male, the attributable risks decreases as age increases. Given the same age for female and male, male has higher expected attributable risks, which means that male’s the risk of getting disease (MSCD=1) decreases more than female if they had not had smoking habit. Such that, at age 40, the expected attributable risk is 35% for females who smoke, and the true attributable risk will be fluctuating within 7% according to the expected risk value. While, the expected attributed risk is about the same for males who smoke, there are also approximate 7% fluctuation for the true attributed risk. Moreover, at age 80, the attributable risk is decreasing to 26% for females and 23% for males.</p>
-<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<p>The MSCD logistic regression has variables, which includes (1) the binary variable of smoking; (2) key characteristics including age, gender; and (3) additional covariates including poverty status, education years. Moreover, age is only a continuous variable in this model. For other variables, such as gender (male=1, female=0), smoke(yes=1, no=0), poverty(yes=1,no=0) are all binary variables. But the education has 4 levels, “20” stands for less than high school, “21” is high school, “22” is 4-years collage, and “23” means more than 4 years collage.</p>
+<p>The logistics regression is meant to model the relationship between the smoking behavior and risk of getting MSCD disease. Towards the end of this section, the smoking attributable risk will be estimate in different age groups by gender. Based on the attributable risks, for both female and male, the attributable risks decrease as age increases. Given the same age for female and male, males have higher expected attributable risks, which means that the males’ risk of getting disease (MSCD=1) decreases more than that of the females’ if they had not had smoking habit. At age 40, the expected attributable risk is 35% for females who smoke, and the true attributable risk will be fluctuating within 7% according to the expected risk value. While, the expected attributed risk is about the same for males who smoke, there is also approximate 7% fluctuation for the true attributed risk. Moreover, at age 80, the attributable risk decreases to 26% for females and 23% for males.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 Disease Model
 </caption>
@@ -446,7 +446,7 @@ poverty
 </tbody>
 </table>
 
-<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 Smoking Attributable Risk by Age and Gender
 </caption>
@@ -570,14 +570,14 @@ E( Exp. | MSCD =1 )= P(Exp.&gt;0|MSCD=1)*E(Exp.|Exp.&gt;0,MSCD=1)
 \]</span></p>
 <p><span class="math display">\[
 E( Exp. | MSCD =0 )= P(Exp.&gt;0|MSCD=0)*E(Exp.|Exp.&gt;0,MSCD=0)
-\]</span> This expenditure model which is also called two-part model estimates the relative size of medical expenditures among persons with vs. without major smoking-caused disease. The following formula shows the basic idea of the two-part model. According to the formulas, to calculate the expected medical expenditure given MSCD or non-MSCD, it needs to model the expected medical expenditure given a positive medical expenditure and MSCD status, as well as probability of occurring any positive medical expenditure given MSCD status.Therefore, two models are implemented to analyze the expectation and the probability in this expenditure model, so called two-part model.</p>
+\]</span> This expenditure model which is also called two-part model estimates the relative size of medical expenditures among persons with vs. without major smoking-caused disease. The following formula shows the basic idea of the two-part model. According to the formulas, to calculate the expected medical expenditure given MSCD or non-MSCD, they would need to model the expected medical expenditure given a positive medical expenditure and MSCD status, as well as the probability of occurring any positive medical expenditure given MSCD status. Therefore, two models are implemented to analyze the expectation and the probability in this expenditure model, so called two-part model.</p>
 <div id="linear-regression-model" class="section level3">
 <h3><em>1.Linear Regression Model</em></h3>
-<p>The linear regression model is to estimate the size of logged( with base 10) medical expenditure given the occurring of positive medcial expenditures and MSCD status. This regression model incorporates, (1)demographics variables: age (age in years), and gender (Male=1; Female=0); (2)Socioeconomic status (SES): education (years of education);and (3)poverty (Poor=1; Not poor=0); (3)Disease: major smoking-caused diseased (MSCD: Yes=1; No=0). The model linear regression modal and each variable’s corresponding coefficient are showed below. Based on the p values for ecah variable, All variables are significant for the model at 0.05 significant level.</p>
+<p>The linear regression model is utilized to estimate the size of logged (with base 10) medical expenditure given the occurring of positive medical expenditures and MSCD status. This regression model incorporates, (1)demographics variables: age (age in years), and gender (Male=1; Female=0); (2)Socioeconomic status (SES): education (years of education);and (3)poverty (Poor=1; Not poor=0); (3)Disease: major smoking-caused diseased (MSCD: Yes=1; No=0). The linear regression model and each variable’s corresponding coefficient are shown below. Based on the p values for each variable, all variables are significant for the model at 0.05 significant level.</p>
 <p><span class="math display">\[
 E[ log_{10}(Medical\, Exp.) ] = \beta_0+\beta_1  Age+\beta_2Gender+ \beta_3 Age\times MSCD+ \beta_4 Poverty+ \beta_5 Education +\beta_6MSCD
 \]</span></p>
-From the linear regression above, it is able to estimate the mean medical expenditures given a occurring positive medical costs in different age groups by gender. Table4 and Table5 reveal estimated mean of medical expenditure given positive medical cost and its differences for male and female in different age groups. According to Table 4, For both male and female the estimated expenditures are more and more as age increase. To be noticed, the female’s medical cost given MSCD=1 is significantly higher than male when hold the other covariate variables unchanged. Not surprisingly, differences of medical cost for female who smoke and don’t smoke are overall larger than male at different age.
+<p>From the linear regression above, it is able to estimate the mean medical expenditures given occurring positive medical cost in different age groups by gender. Table 4 and Table 5 reveal estimated mean of medical expenditure given positive medical cost and its differences for male and female in different age groups. According to Table 4, both male and female the estimated expenditures are more and more as age increase. In addition, the female’s medical cost given MSCD=1 is significantly higher than male when hold the other covariate variables unchanged. Not surprisingly, differences of medical cost for female who smoke and who don’t smoke are overall larger than that of males.</p>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
 Mean Medical Exp.(in U.S.dollar) Given Exp.&gt;0
@@ -669,7 +669,7 @@ E(Exp.|Exp&gt;0,MSCD=0)
 </tr>
 </tbody>
 </table>
-<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 Difference in Mean Medical Expenditure given Exp.&gt;0 (in U.S. dollar)
 </caption>
@@ -810,7 +810,7 @@ Male
 </div>
 <div id="logistic-regression-1" class="section level3">
 <h3><em>2.Logistic Regression</em></h3>
-<p>This logistic regression explains the relationship between have MSCD disease and occurring any positive medical expenditures. It models the probability of occurring the positive medical expenditures given MSCD diseases status.</p>
+<p>This logistic regression explains the relationship between have MSCD disease and occurring any positive medical expenditures. It models the probability of the occurring positive medical expenditures given the MSCD diseases status.</p>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
 Variables and Coeffcients for the Logistic Regression Part of Expenditure Model
@@ -989,7 +989,7 @@ Age_MSCD
 </tr>
 </tbody>
 </table>
-<p>From the logistic regression, the probability for people to any positive cost given MSCD is quite higher than people who don’t have MSCD. But obviously, this difference is smaller when people get older. For example, in table7, for male from age 40 to age 50, the probability of having positive medical cost given MSCD is about 0.953 while with same condition but MSCD=0, the probability has only 0.791. but for male in the age group 70+ years old, the probability of having positive expenditure given MSCD=1 is 0.986 and the non-MSCD has 0.93. For female after 40 years old, the probabilities of having positive medical expenditure are above 0.90 no matter what MSCD condition is. Moreover, reasonably, this positive expenditure probability is overall smaller in population under age 40.</p>
+<p>From the logistic regression, the probability of having a positive medical cost is greater for people with MSCD than that of people who don’t have MSCD. This difference is smaller when people get older. For example, in table 7, for a male between age 40 to age 50, the probability of having a positive medical cost given with MSCD is about 0.953. While, when the male doesn’t have MSCD and all other conditions are the same, the probability of having any medical expenditure is only 0.791. Furthermore, for male in the age group 70+ years old, the probability of having positive expenditure given MSCD=1 is 0.986 and the non-MSCD is 0.93. For a female after 40 years old, the probabilities of having positive medical expenditure is above 0.90 no matter what the MSCD condition is. Moreover, this positive expenditure probability is overall smaller in population under age 40.</p>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
 Risk of a Positive Expenditure Given MSCD Status
@@ -1121,7 +1121,7 @@ P(E&gt;0|MSCD=0))
 <p>Combine probability model and expected medical expenditure model, it will provide the estimated mean of medical expenditure given MSCD status without positive cost as condition. The Table 8 and 9 provide the estimated medical expenditure given MSCD status for male and female. <span class="math display">\[E(Exp.|MSCD=1 )=P(Exp.&gt;0|MSCD=1)\times E(Exp.|Exp&gt;0, MSCD=1)+0\times (1-P(Exp.&gt;0|MSCD=1))\]</span></p>
 <p><span class="math display">\[E(Exp.|MSCD=0 )=P(Exp.&gt;0|MSCD=0)\times E(Exp.|Exp&gt;0, MSCD=1)+0\times (1-P(Exp.&gt;0|MSCD=0))\]</span></p>
 <p><span class="math display">\[Disease\,Attributable\, Fraction\, in\,  Exp. = \frac{E(Exp.|MSCD=1 )-E(Exp.|MSCD=0)}{E(Exp.|MSCD=1 )}\]</span></p>
-<p>For male population, estimated medical cost has dramatically increase as age increase for both MSCD and non-MSCD population. From age 40 to age 80, the estimated expenditure increases approximate 5 times for MSCD male population and more than 10 times for non-MSCD male population. Nevertheless, the smoking caused disease fraction to medical expenditure is decreasing when people get old. The risk is 0.91 at age 40 for male, decrease to 0.74 at age 80. For female population the imprecise trend is pretty much same as male population’s. but the female population has generally large medical expenditures given MSCD=0 than male’s, at age 80, the expenditure given MSCD=1 reaches 24,000 USD. But same age female without MSCD has only about 6,300 USD.</p>
+<p>For the male population, the estimated medical cost has dramatically increased as age increases for both MSCD and non-MSCD population. From age 40 to age 80, the estimated expenditure increases approximate 5 times for the MSCD male population and more than 10 times for the non-MSCD male population. Nevertheless, the smoking caused disease fraction to medical expenditure is decreasing when people get older. The risk is 0.91 at age 40 for males and decreases to 0.74 at age 80. For the female population the imprecise trend is pretty much same as the male population’s. However, the female population has generally large medical expenditures given MSCD=0 than male’s, at age 80, the expenditure given MSCD=1 reaches 24,000 USD. But same age female without MSCD has only about 6,300 USD.</p>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
 Estimated Med. Exp. for Male(1st table) and Female(2nd table)
@@ -1252,16 +1252,16 @@ Disease Attr. Fraction in Exp.
 
 </div>
 </div>
-<div id="part-iii-final-estimation" class="section level2">
+<div id="part-iii-final-estimation-1" class="section level2">
 <h2>Part III: Final Estimation</h2>
 <div id="combind-the-disease-model-and-the-expenditure-model" class="section level3">
 <h3><em>1.Combind the Disease Model and the Expenditure Model</em></h3>
-<p>Finally, based on the estimated smoking attributable risk and smoking-related disease attributable fraction to medical expenditure, it concludes that both for male and female population, the smoking habit has significant contribution on medical expenditures, and this contribution is decreasing as people get older. The smoking attribute medical expenditure fraction is 0.31 for people who are 40 to 50 years old. It decreases to 0.18 for female and male respectively with age 81 and older. Yet, the expected smoking attributable medical expenditure is more and more when male smoker getting older, it makes sense since the total medical expenditure of older population to treat MSCD is overall more than younger male populations. For female, the most smoking attributable medical cost occurring during age 51-60, then the trend goes down significantly, there are about 2,651 USD and 2,439 USD medical costs that are attributable to smoking behavior at age group 71-80 and 80+.</p>
+<p>Finally, based on the estimated smoking attributable risk and smoking-related disease attributable fraction to medical expenditure, it concludes that for both the male and the female population, smoking habits have significant contribution on medical expenditures, and this contribution is decreasing as people get older. The smoking attribute medical expenditure fraction is 0.31 for people who are 40 to 50 years old. It decreases to 0.18 for female and male with ages 81 and older. Yet, the expected smoking attributable medical expenditure is more and more when male smoker getting older, it makes sense since the total medical expenditure of older population to treat MSCD is overall more than the younger male population. For female, the most smoking attributable medical cost occurs during ages 51-60, then the trend decreases significantly, there are about 2,651 USD and 2,439 USD medical costs that are attributable to smoking behavior for age groups 71-80 and 80+.</p>
 <p><span class="math display">\[Smoking\, Attr.\,  Med.\, Exp.= \sum{MSCD_i} \times Total\, Exp_i\times Smoking\,Attr. Risk_i \times MSCD\, Attr.Fraction\ in\,Med.Exp_i\]</span></p>
 <p><span class="math display">\[
 Smoking\, Attr.\,  Med.\, Exp.\, Fraction= \frac{Smoking\, Attr.\,  Med.\, Exp_i }{\sum{MSCD_i}\times Exp_i}
 \]</span></p>
-<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 Smoking Attributable Medical Expenditure
 </caption>
